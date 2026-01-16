@@ -165,17 +165,121 @@
 //	std::cout << "hello world"<< std::endl;
 //}
 
+//#include<iostream>
+//using  std::cout;
+//using  std::cin;
+//using  std::endl;
+//int main()
+//{
+//	int a;double b;
+//	cin >> a>> b;
+//	printf("%d,%.2lf\n", a, b);
+//	cout << a << endl << b << endl;
+//	int c = 20;
+//	double d = 20.312;
+//	cout << c << endl << d << endl;
+//}
+
+
+
 #include<iostream>
-using  std::cout;
-using  std::cin;
-using  std::endl;
+//using namespace std;
+using std::cout;
+using std::endl;
+//void add(int a = 2)
+//{
+//	int b = 3;
+//	cout << a*b << endl;
+//}
+//int main()
+//{
+//	add();
+//	add(4);
+//	return 0;
+//}
+
+
+//全缺省参数
+//void func(int a=2,int b=3)
+//{
+//	cout<< a * b<<endl;
+//	cout<< a /b<<endl;
+//}
+//
+//int main()
+//{
+//	func();
+//	func(5,100);
+//	return 0;
+//}
+
+
+//半缺省参数,至少一个没有指定实参,从右往左缺
+//没有给实参，就用缺省值(一定会有，不然无法编译)，有给定实参，就会替换掉缺省值
+//void func(int a, int b , int c = 10)
+//{
+//	cout << a << endl;
+//	cout << b << endl;
+//	cout << c << endl;
+//} 
+//
+//int main()
+//{
+//	func(1,2);
+//	return 0;
+//}
+//缺省函数，声明给，定义不用给
+
+//#include"SeqList.h"
+//void SLPushBack(SL** sl, int x = 20);
+//int main()
+//{
+//	SL *sl=NULL;
+//	SLPushBack(&sl);
+//	SLPushBack(&sl,100);
+//}
+
+//函数重载
+//类型不同
+int Add(int left, int right)
+{
+	cout << "int Add(int left, int right)" << endl;
+
+	return left + right;
+}
+
+double Add(double left, double right)
+{
+	cout << "double Add(double left, double right)" << endl;
+
+	return left + right;
+}
+
+
+void f(int a, char b)
+{
+	cout <<a <<b<< endl;
+}
+void f(char b, int a)
+{
+	cout << b <<a<< endl;
+}
+void f()
+{
+	cout <<  'a' << endl;
+}
+void f(int a)
+{
+	cout <<a << endl;
+}
+
 int main()
 {
-	int a;double b;
-	cin >> a>> b;
-	printf("%d,%.2lf\n", a, b);
-	cout << a << endl << b << endl;
-	int c = 20;
-	double d = 20.312;
-	cout << c << endl << d << endl;
+	Add(10, 20);
+	Add(10.1, 20.2);
+	f(1);
+	f(10);
+	f(10, 'a');
+	f('a',10);
+	return 0;
 }
