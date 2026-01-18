@@ -241,45 +241,225 @@ using std::endl;
 
 //函数重载
 //类型不同
-int Add(int left, int right)
-{
-	cout << "int Add(int left, int right)" << endl;
+//int Add(int left, int right)
+//{
+//	cout << "int Add(int left, int right)" << endl;
+//
+//	return left + right;
+//}
+//
+//double Add(double left, double right)
+//{
+//	cout << "double Add(double left, double right)" << endl;
+//
+//	return left + right;
+//}
+//
+//
+//void f(int a, char b)
+//{
+//	cout <<a <<b<< endl;
+//}
+//void f(char b, int a)
+//{
+//	cout << b <<a<< endl;
+//}
+//void f()
+//{
+//	cout <<  'a' << endl;
+//}
+//void f(int a)
+//{
+//	cout <<a << endl;
+//}
+//
+//int main()
+//{
+//	Add(10, 20);
+//	Add(10.1, 20.2);
+//	f(1);
+//	f(10);
+//	f(10, 'a');
+//	f('a',10);
+//	return 0;
+//}
 
-	return left + right;
-}
-
-double Add(double left, double right)
-{
-	cout << "double Add(double left, double right)" << endl;
-
-	return left + right;
-}
 
 
-void f(int a, char b)
-{
-	cout <<a <<b<< endl;
-}
-void f(char b, int a)
-{
-	cout << b <<a<< endl;
-}
-void f()
-{
-	cout <<  'a' << endl;
-}
-void f(int a)
-{
-	cout <<a << endl;
-}
+
+
+
+////////////////////////////////////////
+//引用
+
+#include<iostream>
+using std::cout;
+using std::endl;
+
+//int main()
+//{
+//int a = 0;
+//int& b = a;
+//int& c = b;
+//int& d = c;
+//a = 10;
+//c = 15;
+//cout << a << endl;
+//cout << d << endl;
+//return 0;
+//}
+
+//正确,
+//int count()
+//{
+//	static int n = 10;
+//	n++;
+//	return n;
+//}
+//
+//int main()
+//{
+//	int ret = count();
+//	cout << ret << endl;
+//}
+
+
+
+//传值返回
+//int count()
+//{
+//	 int n = 10;
+//	n++;
+//	return n;
+//}
+//
+//int main()
+//{
+//	int ret = count();
+//	cout << ret << endl;
+//}
+
+
+
+//引用返回，越界访问问题
+//int& count(int x)
+//{
+// int n = x;
+//	n++;
+//	return n;
+//}
+//
+//int main()
+//{
+//	
+//	int& ret = count(10);
+//	cout << ret << endl;
+//	cout << "aaa" << endl;
+//	cout << ret << endl;
+//
+//
+//}
+
+//正确做法
+//int& count(int x)
+//{
+//	static int n = x;
+//	n++;
+//	return n;
+//}
+//
+//int main()
+//{
+//	/*int ret = count();
+//	cout << ret << endl;*/
+//	int& ret = count(10);
+//	cout << ret << endl;
+//	cout << &ret << endl;
+//	cout << "aaa" << endl;
+//	cout << &ret << endl;
+//
+//
+//}
+
+//引用权限可以平移，缩小，但不能放大
+//int main()
+//{
+//	//const作为常量值，被修饰的不可以被改变
+//	const int a = 1;
+//	//a=1l
+//	//int& b = a;a不可以被改变，a的引用依旧不能改
+//	int d = a;//赋值可以
+//}
+
+
+//int main()
+//{
+//	//ok
+//	int x = 1;
+//	int& y = x;
+//	const int& z = y;
+//	x++;
+//	//ok?no
+//	//z ++
+//
+//	double d = 1.11;
+//	int i = d;
+//	int& ri = d;//权限不能放大，d到i发生了类型转换，是个常量 ×
+//	const int& pi = d;//权限的平移  √
+//}
+
+//int func()
+//{
+//	static int x = 0;
+//	return x;
+//}
+//int&  func2()
+//{
+//	static int y = 2;
+//	return y;
+//}
+//int main()
+//{
+//	// int& ret = func();//不可以，返回的是临时变量，有常性
+//	 const int& ret1 = func();//权限平移
+//	 int ret2 = func();//拷贝
+//	 int& ret3 = func2();//权限平移
+//	 const int& ret4 = func2();//权限缩小
+//}
+
+
+//int main()
+//{
+//	int c = 1;
+//	double d = 1.222;
+//	if (c > d)
+//	{
+//		cout << "大于" << endl;
+//	}
+//	else
+//		cout << "小于" << endl;
+//}
 
 int main()
-{
-	Add(10, 20);
-	Add(10.1, 20.2);
-	f(1);
-	f(10);
-	f(10, 'a');
-	f('a',10);
-	return 0;
-}
+	{
+	//&是不开空间，取别名
+	int a = 2;
+	int& pa = a;
+
+	pa = 20;
+	cout << pa << endl;
+	cout << &pa << endl;
+	cout << &a << endl;//地址一样
+
+	int b = 8;
+	int* pb = &b;
+	*pb = 1;
+	
+	
+	cout << pb << endl;	
+	cout << &b << endl;
+	cout << *pb << endl;
+
+	
+
+	}
