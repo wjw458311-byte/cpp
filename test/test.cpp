@@ -117,18 +117,18 @@ using std::endl;
 //}
 
 //类的实例化
-//int main()
-//{
-//	Stack St1;
-//	St1.top = 1;
-//	St1.a = (int*)malloc(sizeof (int));
-//	return 0;
-//}
+int main()
+{
+	Stack St1;
+	St1.top = 1;
+	St1.a = (int*)malloc(sizeof (int));
+	return 0;
+}
 
 
 //类大小
-int main()
-{
-	sizeclass size;
-	size.size();
-}
+//int main()
+//{
+//	sizeclass size;
+//	size.size();
+//}

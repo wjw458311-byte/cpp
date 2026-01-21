@@ -39,5 +39,5 @@ void sizeclass::size()
 	cout << sizeof(imf) << endl;
 	cout << sizeof(a) << endl;
 	cout << sizeof(sizeclass) << endl;
-	cout << sizeof(sizeclass::imf) << endl;
+	cout << sizeof(imf.age) << endl;
 }

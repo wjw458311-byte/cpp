@@ -42,10 +42,10 @@ public:
 public :
 	double a;
 	
-	struct imf
+	struct 
 	{
 		char _name[6] = "wujun";
 		int age = 21;
 
-	};
+	}imf;
 };
