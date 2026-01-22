@@ -19,20 +19,20 @@ using std::endl;
 //}
 
 
-class Stack
-{
-public:
-	void init(int defaultcapacity=4);
-	void Push(int x);
-	int Top() const;
-	void Destroy();
-
-public:
-	int* a;
-	int top;
-	int capacity;
-	
-};
+//class Stack
+//{
+//public:
+//	void init(int defaultcapacity=4);
+//	void Push(int x);
+//	int Top() const;
+//	void Destroy();
+//
+//public:
+//	int* a;
+//	int top=0;
+//	int capacity=4;
+//	
+//};
 
 
 class sizeclass
