@@ -35,17 +35,17 @@ using std::endl;
 //};
 
 
-class sizeclass
-{
-public: 
-	void size();
-public :
-	double a;
-	
-	struct 
-	{
-		char _name[6] = "wujun";
-		int age = 21;
-
-	}imf;
-};
+//class sizeclass
+//{
+//public: 
+//	void size();
+//public :
+//	double a;
+//	
+//	struct 
+//	{
+//		char _name[6] = "wujun";
+//		int age = 21;
+//
+//	}imf;
+//};
