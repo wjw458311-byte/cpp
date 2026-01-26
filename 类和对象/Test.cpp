@@ -209,6 +209,7 @@ private:
 //		_month = month;
 //		_day = day;
 //	}
+// //构造函数
 //	Date(const Date& d)
 //	{
 //		cout << "1" << endl;
@@ -221,7 +222,6 @@ private:
 //		if (_year > d1._year)
 //		{
 //			return true;
-//
 //		}
 //		if (d1._year == _year && d1._month >_month)
 //		{
@@ -236,6 +236,8 @@ private:
 //			return false;
 //		}
 //	}
+// 
+// //赋值拷贝
 //	Date& operator=(const Date& d)
 //	{
 //		_year = d._year;
@@ -267,3 +269,14 @@ private:
 //	Date d4, d5;
 //	d4=d5 = d2;
 //}
+
+
+#include"Date.h"
+
+int main()
+{
+	Date d1(2026);
+	d1 += 100;
+	d1.Print();
+	return 0;
+}
