@@ -250,16 +250,16 @@ private:
 //	int _month;
 //	int _day;
 //};
-////int main()
-////{
-////	Date d1(2026, 2, 12);
-////	Date d2(2025, 1, 25);
-////	//cout <<Less(d1, d2) << endl;
-////	d1 > d2;
-////	
-////	return 0;
-////}
-//
+//int main()
+//{
+//	Date d1(2026, 2, 12);
+//	Date d2(2025, 1, 25);
+//	//cout <<Less(d1, d2) << endl;
+//	d1 > d2;
+//	
+//	return 0;
+//}
+
 //int main()
 //{
 //	Date d1(2026, 2, 12);
@@ -273,10 +273,63 @@ private:
 
 #include"Date.h"
 
+//d1-d2
+void TestDate1()
+{
+	Date d3(2026, 1, 27);
+	d3 -= 37;
+	d3.Print();
+	Date d4=d3 += 100;
+	d4.Print();
+
+}
+void TestDate2()
+{
+	Date d5(2026, 5, 1);
+	d5 += -100;
+	d5.Print();
+
+	Date d6(2026, 1, 25);
+	d6 -= -180;
+	d6.Print();
+}
+
+void TestDate3()
+{
+	Date d7(2026, 1, 27);
+	Date d8(2026, 4, 27);
+	int ret=d8 - d7;
+	cout << ret << endl;
+}
+void TestDate4()
+{
+//	Date d9(2026, 1, 1);
+	//cout << d9;
+	//operator<<(cout, d9);
+	Date d9(2026, 1, 1);
+	Date d10(2026, 1, 2);
+	Date d11(2026, 1, 3);
+	cout << d9 << d10 << d11;
+
+}
+
+void TestDate5()
+{
+	Date d1;
+	Date d2;
+	cin >> d1 >> d2;
+	cout << d1 << d2;
+
+}
 int main()
 {
 	Date d1(2026);
 	d1 += 100;
 	d1.Print();
+	//estDate1();
+	//TestDate2();
+	//TestDate3();
+	TestDate4();
+	TestDate5();
 	return 0;
 }

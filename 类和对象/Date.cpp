@@ -71,6 +71,10 @@ int Date::getmonthday(int year,int month)
 //d+day  d=*this day=day
 Date&  Date::operator+=(int day)
 {
+	if (day < 0)
+	{
+		return *this -= -day;
+	}
 	_day += day;
 	while (_day>getmonthday(_year,_month))
 	{
@@ -83,5 +87,60 @@ Date&  Date::operator+=(int day)
 		}
 	}
 	return *this;
+}
+Date& Date::operator-=(int day)
+{
+	if (day < 0)
+	{
+		return *this += -day;
+	}
+	_day -= day;
+	while (_day <= 0)
+	{
+		//不够减，向月借
+		_month--;
+		if (_month==0)
+		{
+			_month = 12;
+			_year--;
+		}
+		_day += getmonthday(_year, _month);
+	}
+	return *this;
+}
+//d1-d2
+int Date::operator -(const Date& d)
+{
+	Date max = *this;
+	Date min = d;
+	//int flag = 1;
+	if (max < min)
+	{
+		max = d;
+		min = *this;
+	}
+	int day = 0;
+	while (min<max)
+	{
+		min+=1;
+		day++;
+	}
+	return day;
+}
+
+//流插入
+ostream& operator<<(ostream& out, const Date& d)
+{
+	out << d._year << "年" << d._month << "月" << d._day << "日" << endl;
+	return out;
+}
+
+//流提取
+istream& operator>>(istream& in, Date& d)
+
+{
+	//int year,month,day;
+	in >> d._year >> d._month >> d._day;
+	return in;
 }
 

@@ -14,6 +14,13 @@ public:
 		_month = d._month;
 		_day = d._day;
 	}*/
+	/*Date& operator=(const Date& d)
+			{
+				_year = d._year;
+				_month = d._month;
+				_day = d._day;
+				return *this;
+			}*/
 	void Print()
 	{
 		cout << _year << "-" << _month << "-" << _day << endl;
@@ -26,9 +33,16 @@ public:
 	bool operator>=(const Date& d);
 	int getmonthday(int year,int month);
 	Date& operator+=(int day);
-
+	Date& operator-=(int day);
+	int operator-(const Date &d);
 private:
+	friend ostream& operator<<(ostream& out, const Date& d);
+	friend istream& operator>>(istream& in, Date& d);
+	
 	int _year;
 	int _month;
 	int _day;
 };
+ostream& operator<<(ostream& out, const Date& d);
+
+istream& operator>>(istream& in, Date& d);
