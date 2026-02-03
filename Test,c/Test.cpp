@@ -210,27 +210,105 @@ using namespace std;
 //}
 
 
+//class A
+//{
+//public:
+//		A() { ++_scount; }
+//		A(const A & t) { ++_scount; }
+//		~A() { --_scount; }
+//		static int GetACount() { return _scount; }
+//private:
+//		static int _scount;
+//};
+//
+//int A::_scount = 0;
+//void TestA()
+//
+//{
+//		cout << A::GetACount() << endl;
+//		A a1, a2;
+//		A a3(a1);
+//		cout << A::GetACount() << endl;
+//}
+//int main()
+//{
+//	TestA();
+//}
+
 class A
 {
 public:
-		A() { ++_scount; }
-		A(const A & t) { ++_scount; }
-		~A() { --_scount; }
-		static int GetACount() { return _scount; }
+	A(int a = 0)
+		:_a(a)
+	{
+		cout << "A(int a = 0)" << endl;
+	}
+	A(const A& a)
+		:_a(a._a)
+	{
+		cout << "A(const A& aa)" << endl;
+	}
+	A& operator=(const A& a)
+	{
+		cout << "A& operator=(const A& aa)" << endl;
+
+		if (this != &a)
+		{
+			_a = a._a;
+		}
+
+		return *this;
+	}
+	~A()
+	{
+		cout << "~A()" << endl;
+	}
 private:
-		static int _scount;
+	int _a;
 };
 
-int A::_scount = 0;
-void TestA()
-
+void Func1(A aa)
 {
-		cout << A::GetACount() << endl;
-		A a1, a2;
-		A a3(a1);
-		cout << A::GetACount() << endl;
+
+}
+
+void Func2(const A& aa)
+{
+
+}
+
+A Func3()
+{
+    A aa;
+    return aa;
+}
+
+A& Func4()
+{
+    static A aa;
+    return aa;
+}
+A Func5()
+{
+	A aa;
+	return aa;
 }
 int main()
 {
-	TestA();
+   //A a1;
+    //Func1(a1);
+   // Func2(a1);
+
+    //Func3();
+    //Func4();
+    A ra= Func5();
+	A raa;
+	raa = Func5();
+
+//Func5();
+	//A aa1;//构造
+	//Func1(aa1);//拷贝构造
+	//Func1(A(1));//构造
+	//A aa2 = 2;//构造
+    return 0;
 }
