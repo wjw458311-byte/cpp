@@ -235,80 +235,165 @@ using namespace std;
 //	TestA();
 //}
 
+//class A
+//{
+//public:
+//	A(int a = 0)
+//		:_a(a)
+//	{
+//		cout << "A(int a = 0)" << endl;
+//	}
+//	A(const A& a)
+//		:_a(a._a)
+//	{
+//		cout << "A(const A& aa)" << endl;
+//	}
+//	A& operator=(const A& a)
+//	{
+//		cout << "A& operator=(const A& aa)" << endl;
+//
+//		if (this != &a)
+//		{
+//			_a = a._a;
+//		}
+//
+//		return *this;
+//	}
+//	~A()
+//	{
+//		cout << "~A()" << endl;
+//	}
+//private:
+//	int _a;
+//};
+//
+//void Func1(A aa)
+//{
+//
+//}
+//
+//void Func2(const A& aa)
+//{
+//
+//}
+//
+//A Func3()
+//{
+//    A aa;
+//    return aa;
+//}
+//
+//A& Func4()
+//{
+//    static A aa;
+//    return aa;
+//}
+//A Func5()
+//{
+//	A aa;
+//	return aa;
+//}
+//int main()
+//{
+//   //A a1;
+//    //Func1(a1);
+//   // Func2(a1);
+//
+//    //Func3();
+//    //Func4();
+//    A ra= Func5();
+//	A raa;
+//	raa = Func5();
+//
+////Func5();
+//	//A aa1;//构造
+//	//Func1(aa1);//拷贝构造
+//	//Func1(A(1));//构造
+//	//A aa2 = 2;//构造
+//    return 0;
+//}
+
+//int main()
+//{
+//	//C
+//	int* p1 = (int*)malloc(sizeof(int));
+//	
+//	int* p2 = (int*)malloc(sizeof(int)*10);
+//	free(p1);
+//	free(p2);
+//
+//	//c++
+//	int* p3 = new int;
+//	delete[]p3;
+//	int* p4 = new int(10);
+//	delete[]p4;
+//	int* p6 = new int[10] {1, 2, 3};
+//    delete[] p6;
+//	return 0;
+//}
+
+//typedef struct ListNode
+//{
+//	int _data;
+//	struct ListNode* next;
+//	ListNode(int x)
+//		:_data(x)
+//		,next(NULL)
+//	{ }
+//}ListNode;
+// ListNode* BuyListNode(int x)
+//{
+//	 ListNode* newnode = (ListNode*)malloc(sizeof(ListNode));
+//	 if (newnode==NULL)
+//	 {
+//		 perror("no");
+//		 return NULL;
+//	 }
+//	 newnode->next = NULL;
+//	 newnode->_data = x;
+//	 return newnode;
+//}
+//
+// int main()
+// {
+////ListNode* n1 = BuyListNode(1);
+////ListNode* n2 = BuyListNode(2);
+////ListNode* n3 = BuyListNode(3);
+//ListNode* a1 = new ListNode(10);
+//ListNode* a2 = new ListNode(11);
+//ListNode* a3 = new ListNode(12);
+//int* b1 = new int[5]; //随机值
+//
+//int* b1 = new int[5] {0};//全部初始化为0
+//delete[]b1;
+// }
+
 class A
 {
 public:
-	A(int a = 0)
+	A(int a=1)
 		:_a(a)
 	{
-		cout << "A(int a = 0)" << endl;
+		cout << "A()" << endl;
 	}
 	A(const A& a)
 		:_a(a._a)
-	{
-		cout << "A(const A& aa)" << endl;
-	}
-	A& operator=(const A& a)
-	{
-		cout << "A& operator=(const A& aa)" << endl;
-
-		if (this != &a)
-		{
-			_a = a._a;
-		}
-
-		return *this;
-	}
+	{}
 	~A()
 	{
 		cout << "~A()" << endl;
 	}
+
 private:
 	int _a;
 };
-
-void Func1(A aa)
-{
-
-}
-
-void Func2(const A& aa)
-{
-
-}
-
-A Func3()
-{
-    A aa;
-    return aa;
-}
-
-A& Func4()
-{
-    static A aa;
-    return aa;
-}
-A Func5()
-{
-	A aa;
-	return aa;
-}
 int main()
 {
-   //A a1;
-    //Func1(a1);
-   // Func2(a1);
-
-    //Func3();
-    //Func4();
-    A ra= Func5();
-	A raa;
-	raa = Func5();
-
-//Func5();
-	//A aa1;//构造
-	//Func1(aa1);//拷贝构造
-	//Func1(A(1));//构造
-	//A aa2 = 2;//构造
-    return 0;
+A* p1 = (A*)malloc(sizeof(A));
+	A* p2 = new A(1);
+	A* p3 = new A[10];
+	free(p1);
+	delete p2;
 }
+
+
