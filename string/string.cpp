@@ -1,5 +1,6 @@
 ﻿
 #include <iostream>
+//#include<string>
 using namespace std;
 
 
@@ -106,22 +107,194 @@ void Swap(T& x, T& y)
     x = y;
     y = temp;
 }
+//int main()
+//{
+//    int a = 0, b = 1;
+//    double c = 1.1, d = 2.2;
+//   // Swap(a,b); 
+//    cout << a <<endl << b << endl;
+//    swap(a, b);
+//    cout << a << endl << b << endl;
+//    swap(c, d);
+//    cout << c << endl<< d << endl;
+//    int* p1 = &a;
+//   int* p2 = &b;
+//    swap(p1,p2);
+//    cout << p1 << endl <<p2<< endl;
+//
+//    return 0;
+//}
+
+template <typename T1,typename T2>
+void  Func(const T1&x1,const T2&x2)
+{
+    cout << x1 << "  " << x2 << endl;
+   
+}
+
+//int main()
+//{
+//    int a = 0, b = 1;
+//    Swap(a, b);
+//
+//    double c = 1.1, d = 2.2;
+//    Swap(c, d);
+//
+//    Func(1, 2);
+//    Func(1, 2.2);
+//    return 0;
+//}
+
+//template <typename T>
+////隐式实例化
+//T Add(const T& x, const T &y)
+//{
+//    return x + y;
+//}
+// int main()
+//{
+//    int a1 = 10, a2 = 20;
+//    double d1 = 10.1, d2 = 20.2;
+//    // 实参传递的类型，推演T的类型
+//    cout << Add(a1, a2) << endl;
+//    cout << Add(d1, d2) << endl;
+//    cout << Add((double)a1, d2) << endl;
+//
+//    //显示实例化
+//    cout << Add<int>(a1, d2) << endl;
+//    cout << Add<double>(a1, d2) << endl;
+//}
+
+//int类型
+//typedef int datatype;
+//class Stackint
+//{
+//public:
+//    //Stackint(datatype capacity = 3)
+//    //    //malloc
+//    //    :_arr(nullptr)
+//    //    ,_size(0)
+//    //    ,_capacity(capacity)
+//    //{
+//    //    _arr = (datatype*)malloc(sizeof(datatype));
+//    //    if (_arr = NULL)
+//    //    {
+//    //        perror("fail");
+//    //        return;
+//    //    }
+//    //}
+//    Stackint(datatype capacity = 3)
+//    
+//        :_arr(new datatype[capacity])
+//         ,_capacity(capacity)
+//        ,_size(0)
+//        {}
+//    ~Stackint()
+//    {
+//        delete[]_arr;
+//    }
+//    void PushStack(datatype x)
+//    {
+//        _arr[_size++] = x;
+//    }
+//private:
+//    datatype* _arr;
+//    int _size=0;
+//    int _capacity;
+//};
+//
+//
+//typedef double datatype;
+//class Stackdouble
+//{
+//public:
+//    
+//    Stackdouble(datatype capacity = 3)
+//
+//        :_arr(new datatype[capacity])
+//        , _capacity(capacity)
+//        , _size(0)
+//    {
+//    }
+//    ~Stackdouble()
+//    {
+//        delete[]_arr;
+//    }
+//    void PushStack(datatype x)
+//    {
+//        _arr[_size++] = x;
+//    }
+//private:
+//    datatype* _arr;
+//    int _size = 0;
+//    int _capacity=0;
+//};
+// int main()
+//{
+//	Stackint s1; // int
+//	Stackdouble s2; // double
+//	return 0;
+//}
+
+//类模板
+//template <class T>
+//class Stack
+//{
+//public:
+//    Stack(int capacity = 3);
+//    void PushStack(const T& x);
+//    ~Stack()
+//    {
+//        delete[]_arr;
+//    }
+//   
+//private:
+//    T* _arr;
+//    int _capacity = 0;
+// int _size = 0;
+//};
+//
+//template<typename T>
+//Stack<T>::Stack(int capacity )
+//    :_arr(new T[capacity])
+//    , _capacity(capacity)
+//    , _size(0)
+//{
+//}
+//template<typename T>
+//void Stack<T>::PushStack(const T& x)
+//{
+//    _arr[_size++] = x;
+//}
+//
+//int main()
+//{
+//   Stack<int> s1;
+//   Stack<double> s2;
+//}
+
+//int main()
+//{
+//    string name;
+//    string name1("张三");
+//    string name2("hellooo");
+//    name2 = "wujun";
+//    string s1(10,'@');
+//    string s2(name2);
+//    string s3(name2,2,100);//取到最后
+//    cout << name << endl;
+//    cout << (s1>name2) << endl;
+//    cout << name2 << endl;
+//    cout << s3 << endl;
+//}
+
 int main()
 {
-    int a = 0, b = 1;
-    double c = 1.1, d = 2.2;
-   // Swap(a,b); 
-    cout << a <<endl << b << endl;
-    swap(a, b);
-    cout << a << endl << b << endl;
-    swap(c, d);
-    cout << c << endl<< d << endl;
-    int* p1 = &a;
-   int* p2 = &b;
-
-
-    swap(p1,p2);
-    cout << p1 << endl <<p2<< endl;
-
-    return 0;
+    //增
+    string name1("hello");
+    string name2(" China");
+    //name1.append(" world");//尾插一个字符串
+    name1.append(name2);
+    name1 += " world";
+    cout << name1 << endl;
 }
