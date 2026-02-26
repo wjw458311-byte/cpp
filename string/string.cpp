@@ -1,5 +1,6 @@
 ﻿
 #include <iostream>
+#include<vector>
 //#include<string>
 using namespace std;
 
@@ -288,13 +289,154 @@ void  Func(const T1&x1,const T2&x2)
 //    cout << s3 << endl;
 //}
 
+//int main()
+//{
+//    //增
+//    string name1("hello");
+//    string name2(" China");
+//    //name1.append(" world");//尾插一个字符串
+//    name1.append(name2);
+//    name1 += " world";
+//    cout << name1 << endl;
+//}
+
+#include<algorithm>
+
+//int main()
+//{
+//    //遍历string
+//    string s1("hello world ");
+//    /*for (int i = 0; i < s1.size(); i++)
+//    {
+//        s1[i]++;
+//    }*/
+//    for (int i = 0; i <s1.size(); i++)
+//    {
+//        cout << s1[i]<<"->";
+//    }
+//    cout << endl;
+//    string::iterator it = s1.begin();
+//    while(it !=s1.end())
+//    {
+//        cout << *it;
+//        it++;
+//    }
+//    cout << endl;
+//
+//   /* for (auto& ch:s1)
+//    {
+//        ch++;
+//        cout << ch << "->";
+//
+//    }
+//    cout << endl;*/
+//
+//  
+//    vector<int> v;
+//    v.push_back(1);
+//    v.push_back(3);
+//    v.push_back(20);
+//    v.push_back(7);
+//    v.push_back(9);
+//    vector<int>::iterator vit = v.begin();
+//    while(vit!=v.end())
+//    { 
+//        cout << *vit;
+//        vit++;
+//    }
+//    cout << endl;
+//    cout << " ----------------";
+//    reverse(s1.begin(), s1.end());
+//    reverse(v.begin(), v.end());
+//    sort(v.begin(), v.end());
+//    for (auto& e : s1)
+//    {
+//        cout << e;
+//    }
+//    cout << endl;
+//    for (auto& e : v)
+//    {
+//        cout << e;
+//    }
+//    cout << endl;
+//
+//}
+
+//void func(const string &s)
+//{
+//    //string::const_iterator it = s.begin();
+//    auto it = s.begin();
+//    while (it != s.end())
+//    {
+//
+//        cout << *it<< "-";
+//        it++;
+//    }
+//    cout << endl;
+//    auto rit = s.rbegin();
+//    while (rit != s.rend())
+//    {
+//
+//        cout << *rit<< "-";
+//        rit++;
+//    }
+//    cout << endl;
+//}
+//int main()
+//{
+//    string s1("hello world");
+//    //正向遍历可读写
+//    string::iterator it = s1.begin();
+//    while (it!=s1.end())
+//    {
+//        *it += 1;
+//        cout << *it<<"-";
+//        it++;
+//    }
+//    cout << endl;
+// 
+//    //逆向可读写
+//    auto rit = s1.rbegin();
+//    while (rit != s1.rend())
+//    {
+//        *rit -= 1;
+//        cout << *rit<< "-";
+//        rit++;
+//    }
+//    cout << endl;
+//    //只读
+//    func(s1);
+//
+//
+//}
+
+
 int main()
 {
-    //增
-    string name1("hello");
-    string name2(" China");
-    //name1.append(" world");//尾插一个字符串
-    name1.append(name2);
-    name1 += " world";
-    cout << name1 << endl;
+	string s1("hello world");
+	cout << s1.size() << endl;
+	cout << s1.length() << endl;
+	//cout << s1.max_size() << endl;
+	cout << s1.capacity() << endl;
+
+	size_t old = s1.capacity();
+	for (size_t i = 0; i < 100; i++)
+	{
+		s1 += 'x';
+
+		if (old != s1.capacity())
+		{
+			cout << "扩容：" << s1.capacity() << endl;
+			old = s1.capacity();
+		}
+
+	}
+
+	cout << s1.size() << endl;
+	cout << s1.capacity() << endl;
+	s1.clear();
+	cout << s1.size() << endl;
+	cout << s1.capacity() << endl;
+
+	return 0;
 }
