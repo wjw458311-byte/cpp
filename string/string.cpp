@@ -1,7 +1,7 @@
 ﻿
 #include <iostream>
 #include<vector>
-//#include<string>
+#include<string>
 using namespace std;
 
 
@@ -411,32 +411,178 @@ void  Func(const T1&x1,const T2&x2)
 //}
 
 
-int main()
-{
-	string s1("hello world");
-	cout << s1.size() << endl;
-	cout << s1.length() << endl;
-	//cout << s1.max_size() << endl;
-	cout << s1.capacity() << endl;
+//int main()
+//{
+//	string s1("hello world");
+//	cout << s1.size() << endl;
+//	cout << s1.length() << endl;
+//	//cout << s1.max_size() << endl;
+//	cout << s1.capacity() << endl;
+//
+//	size_t old = s1.capacity();
+//	for (size_t i = 0; i < 100; i++)
+//	{
+//		s1 += 'x';
+//
+//		if (old != s1.capacity())
+//		{
+//			cout << "扩容：" << s1.capacity() << endl;
+//			old = s1.capacity();
+//		}
+//
+//	}
+//
+//	cout << s1.size() << endl;
+//	cout << s1.capacity() << endl;
+//	s1.clear();
+//	cout << s1.size() << endl;
+//	cout << s1.capacity() << endl;
+//
+//	return 0;
+//}
 
-	size_t old = s1.capacity();
-	for (size_t i = 0; i < 100; i++)
-	{
-		s1 += 'x';
 
-		if (old != s1.capacity())
-		{
-			cout << "扩容：" << s1.capacity() << endl;
-			old = s1.capacity();
-		}
+//int main()
+//{
+//    string s;
+//    s.reserve(100);
+//    int sz = s.capacity();
+//    cout<< "capacity changed: " << sz << '\n';
+//    for (auto i = 0; i < 100; i++)
+//    {
+//        s += "xxx";
+//       
+//    }
+//    if (sz!=s.capacity())
+//    {
+//        sz = s.capacity();
+//        cout << "capacity changed: " << sz << '\n';
+//    }
+//    s.clear();
+//
+//    cout << "capacity changed: " << sz << endl;
+//    
+//    s.reserve(0);
+//    sz = s.capacity();
+//   	cout << "capacity changed: " << sz << '\n';
+//}
 
-	}
 
-	cout << s1.size() << endl;
-	cout << s1.capacity() << endl;
-	s1.clear();
-	cout << s1.size() << endl;
-	cout << s1.capacity() << endl;
+//int main()
+//{
+//    string s("hello world");
+//   // 
+//    //不预留就是比数组大一点，预留就是扩容到起码是预留空间
+//    cout << s.size() << endl << s.capacity()<<endl;
+//    s.reserve(100);//不开辟size
+//    cout << s.size() << endl << s.capacity() << endl;;
+//    s.resize(100,1);//开空间，开辟size,不填值就是默认0
+//    cout << s.size() << endl;
+//    cout << s.capacity() << endl;
+//    s.resize(20);
+//    cout << s.size() << endl;
+//    cout << s.capacity() << endl;
+//}
 
-	return 0;
-}
+//int main()
+//{
+//    string s1("hellow world");
+//    s1.at(2) =  81;//输入的数字，其实要转化成ASCII码
+//    //s1.at(2) = 'x';
+//    s1[1] = 'x';
+//    cout << s1 << endl;
+//    //暴力检查
+//   //s1[15];
+//    //温柔处理
+//    s1.at(20);
+//    return 0;
+//}
+
+
+//int main()
+//{
+//  //  insert用法
+//   /* string s1("hello world ");
+//    s1.append("wujun");
+//    cout << s1 << endl;
+//    s1.insert(0, "'x'");
+//    cout << s1 << endl;
+//    s1.insert(6, "world");
+//    cout << s1 << endl;
+//    s1.insert(11, 3,'a');
+//    cout << s1 << endl;*/
+//
+//    //erase用法
+//    string s2("hello taobao");
+//   // string& erase (size_t pos = 1, size_t len = 3);\
+//    //从pos位置开始擦除，删除n个
+//   // s2.erase(5, 6);
+//    cout << s2 << endl;
+//    //从下标为6的位置开始擦除，到末尾
+//   // s2.erase(6);
+//  //  cout << s2 << endl;
+//
+//    //从起始指针，删到末尾指针为止
+//    s2.erase(s2.begin(),s2.end()-6);
+//
+//    //迭代器头删,不过最好还是用下标的方式
+//    s2.erase(s2.begin());
+//    cout << s2 << endl;
+//
+//    return 0;
+//}
+
+
+    //int main()
+    //{
+    //    // world替换成 xxxxxxxxxxxxxxxxxxxxxx
+    //    string s1("hello world hello bit");
+    //    s1.replace(6, 4, "xxxxxxxxxxxxxxxxxxxxxx");
+    //    cout << s1 << endl;
+
+    //    s1.replace(6, 23, "yyyyy");
+    //    cout << s1 << endl;
+
+    //    // 所有空格替换成20%
+    //    string s2("hello world hello bit");
+    //    string s3;
+    //    for (auto ch : s2)
+    //    {
+    //        if (ch != ' ')
+    //        {
+    //            s3 += ch;
+    //        }
+    //        else
+    //        {
+    //            s3 += "20%";
+    //        }
+    //    }
+
+    //    s2 = s3;
+    //    cout << s2 << endl;
+    //
+    //}
+
+////分割域名
+//int main()
+//{
+//    string url =  "https://legacy.cplusplus.com/reference/string/string/";
+//    int pos1 = url.find("://",0);
+//    string protocol;
+//    if (pos1 != string::npos)
+//    {
+//        protocol = url.substr(0,pos1);
+//    }
+//    cout << protocol << endl;
+//    string domain;
+//    string uri;
+//    int pos2 = url.find("/",pos1+3);
+//    if (pos2 != string::npos)
+//    {
+//        domain = url.substr(pos1+3, pos2-(pos1+3));
+//        uri = url.substr(pos2 + 1);
+//    }
+//    cout << domain << endl;
+//   cout << uri << endl;
+//}
+
