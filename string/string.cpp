@@ -586,3 +586,21 @@ void  Func(const T1&x1,const T2&x2)
 //   cout << uri << endl;
 //}
 
+int main()
+{
+  
+    char str1[] = "abcd";
+    char str2[2];
+    str2[0] = 98;
+    
+    cout << str2[0] << endl;
+    
+    char str3[] = "淘宝";
+    cout << sizeof(str3) << endl;
+    cout << str3 << endl;
+    
+    
+    str3[1]--;
+    cout << sizeof(str3) << endl;
+    cout << str3 << endl;
+}
