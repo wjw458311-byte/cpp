@@ -60,8 +60,55 @@ void Teststring2()
 	 cout << s2.c_str() << endl;
 
 }
+void Teststring3()
+{
+	wj::string s1("helloworld");
+	cout << s1.c_str() << endl;
+
+	s1.insert(5, 3, '#');
+	cout << s1.c_str() << endl;
+
+	s1.insert(0, 3, '#');
+	cout << s1.c_str() << endl;
+
+
+	wj::string s2("helloworld");
+	s2.insert(5, "%%%%%");
+	cout << s2.c_str() << endl;
+}
+void Teststring4()
+{
+	wj::string s1("helloworld");
+	cout << s1.c_str() << endl;
+
+	s1.erase(5, 20);
+	cout << s1.c_str() << endl;
+
+}
+void Teststring5()
+{
+	
+	wj::string url = "ftp://www.baidu.com/?tn=65081411_1_oem_dg";
+
+	size_t pos1 = url.find("://");
+	if (pos1 != wj::string::npos)
+	{
+		wj::string protocol = url.substr(0, pos1);
+		cout << protocol.c_str() << endl;
+	}
+
+	size_t pos2 = url.find('/', pos1 + 3);
+	if (pos2 != wj::string::npos)
+	{
+		wj::string domain = url.substr(pos1 + 3, pos2 - (pos1 + 3));
+		wj::string uri = url.substr(pos2 + 1);
+
+		cout << domain.c_str() << endl;
+		cout << uri.c_str() << endl;
+	}
+}
 int main()
 {
-	Teststring2();
+	Teststring5();
 	return 0;
 }
