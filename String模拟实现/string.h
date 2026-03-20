@@ -44,7 +44,7 @@ namespace wj
 	}
 	~string()
 	{
-		delete[]_str;
+		delete[] _str;
 		_str = nullptr;
 		_size = 0;
 		_capacity = 0;
@@ -237,6 +237,25 @@ namespace wj
 			tmp += _str[i];
 		}
 		return tmp;
+	}
+	void resize(size_t n,char ch)
+	{
+		//比原先还小
+		if (n<_size)
+		{
+			_size = n;
+			_str[_size] = '\0';
+		}
+		//n比_size大或者比容量大
+		else
+		{
+			for (size_t i = _size; i < n; i++)
+			{
+				_str[i] = ch;
+			}
+			_size = n;
+			_str[_size] = '\0';
+		}
 	}
 private:
 	size_t _size;

@@ -107,8 +107,18 @@ void Teststring5()
 		cout << uri.c_str() << endl;
 	}
 }
+void Teststring6()
+{
+	wj::string s1("hello world");
+	s1.resize(7,'\0');
+	cout << s1.c_str() << endl;
+	s1.resize(10,'x');
+	cout << s1.c_str() << endl;
+	s1.resize(15, 'o');
+	cout << s1.c_str() << endl;
+}
 int main()
 {
-	Teststring5();
+	Teststring6();
 	return 0;
 }
