@@ -1,8 +1,6 @@
 #define  _CRT_SECURE_NO_WARNINGS 1
 #include"string.h"
-
-#include <iostream>
-
+#include<string>
 using namespace std;
 
 
@@ -117,8 +115,35 @@ void Teststring6()
 	s1.resize(15, 'o');
 	cout << s1.c_str() << endl;
 }
+void Teststring7()
+{
+	wj::string s1("hello");
+	wj::string s2("hello world");
+	cout << (s1 < s2) << endl;
+	cout << (s1 <= s2) << endl;
+	cout << (s1 == s2) << endl;
+	cout << (s1 >= s2) << endl;
+	wj::string s3("abcde0");
+	wj::string s4("abcde");
+	cout << (s3 < s4) << endl;
+	cout << (s3 > s4) << endl;
+	cout << (s3 == s4) << endl;
+}
+void Teststring8()
+{
+	wj::string s1("hello");
+	wj::string s2(s1);
+	cout << s1 << endl;
+	cout << s2 << endl;
+
+	wj::string s3("ABCDEDFG");
+	s1 = s3;
+	cout << s1 << endl;
+	cout << s3 << endl;
+}
+
 int main()
 {
-	Teststring6();
+	Teststring8();
 	return 0;
 }
