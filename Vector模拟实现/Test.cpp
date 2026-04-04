@@ -212,12 +212,17 @@ void vector5()
 		}
 	}
 }
+//int main()
+//{
+//	//vector1();
+//	//vector2();
+//	//vector3();
+//	vector4();
+//	vector5();
+//	return 0;
+//}
+#include"vector.h"
 int main()
 {
-	//vector1();
-	//vector2();
-	//vector3();
-	vector4();
-	vector5();
-	return 0;
+	wj::test_vector2();
 }

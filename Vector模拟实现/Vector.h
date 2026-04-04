@@ -1,1 +1,178 @@
 #pragma once
+#include<assert.h>
+//#include<iostream>
+//using namespace std;
+//命名空间域
+namespace wj
+{
+	template<class T>
+	class A
+	{
+	public:
+		typedef T* iterator;
+		typedef const T* const_iterator;
+		size_t capacity()
+		{
+			return _end_of_storage - _start;
+		}
+		size_t size()
+		{
+			return _finish - _start;
+		}
+		iterator begin()const
+		{
+			return  _start;
+		}
+		iterator begin()
+		{
+			return  _start;
+		}
+		iterator end()const
+		{
+			return  _finish;
+		}
+		iterator end()
+		{
+			return  _finish;
+		}
+		T& operator[](size_t pos)
+		{
+			assert(pos < size());
+
+			return _start[pos];
+		}
+		A()
+			:_start(nullptr)
+			,_finish(nullptr)
+			,_end_of_storage(nullptr)
+		{ }
+		~A()
+			
+		{ 
+			delete[]_start;
+		_start = _finish = _end_of_storage = nullptr;
+		}
+		void reserve(size_t n)
+		{
+			//扩容数量>当前容量	
+			if (n>capacity())
+			{
+				//空间不为空
+				T* tmp = new  T[n];
+				//提前保存一个,不然后面size()函数中_start是新空间，但是_finish是旧空间
+				size_t sz = size();
+				if (_start)
+				{
+
+					memcpy(tmp, _start, sizeof(T) * sz);
+					delete[] _start;
+				}
+				_start = tmp;
+				_finish = _start + sz;
+				_end_of_storage = _start + n;
+			}
+		}
+		void insert(iterator pos,const T&x)
+		{
+			assert(pos >= begin() && pos <=end());
+
+			if (_finish == _end_of_storage)
+			{
+				size_t len = pos - _start;
+				size_t newcapacity = capacity() == 0 ? 4 : capacity() * 2;
+				reserve(newcapacity);
+				pos = _start + len;
+			}
+			iterator end = _finish - 1;
+			//转移数据
+			while (end>=pos)
+			{
+				*(end + 1) = *end;
+				end--;
+			}
+			*pos = x;
+			_finish++;
+
+		}
+		void push_back( const T& x)
+		{
+			//考虑扩容
+			if (_finish==_end_of_storage)
+			{
+				
+				size_t newcapacity = capacity() == 0 ? 4 : capacity() * 2;
+				reserve(newcapacity);
+			}
+			*_finish = x;
+			_finish++;
+			//insert(end(),x);
+		}
+	
+	private:
+		iterator _start;
+		iterator _finish;
+		iterator _end_of_storage;
+	};
+	void print(const  A<int>& v)
+	{
+		for (auto e : v)
+		{
+			cout << e << " ";
+		}
+		cout << endl;
+	}
+	void test_vector1()
+	{
+		A<int> v1;
+		v1.push_back(1);
+		v1.push_back(2);
+		v1.push_back(3);
+		v1.push_back(4);
+		v1.push_back(5);
+		v1.push_back(6);
+		v1.push_back(7);
+		v1.push_back(4);
+		for (auto e:v1)
+		{
+			cout << e << " ";
+		}
+		cout << endl;
+		for (size_t i = 0; i < v1.size(); i++)
+		{
+			v1[i]++;
+		}
+
+		for (auto e : v1)
+		{
+			cout << e << " ";
+		}
+		cout << endl;
+		//print(v1);
+	}
+	void test_vector2()
+	{
+		A<int> v1;
+		v1.push_back(1);
+		v1.push_back(2);
+		v1.push_back(3);
+		v1.push_back(4);
+		v1.push_back(5);
+		v1.push_back(5);
+		v1.push_back(5);
+		v1.push_back(5);
+
+		for (auto e : v1)
+		{
+			cout << e << " ";
+		}
+		cout << endl;
+
+		v1.insert(v1.begin()+2, 10);
+
+		for (auto e : v1)
+		{
+			cout << e << " ";
+		}
+		cout << endl;
+	}
+}
