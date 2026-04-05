@@ -107,7 +107,35 @@ namespace wj
 			_finish++;
 			//insert(end(),x);
 		}
-	
+		iterator erase(iterator  pos)
+		{
+			assert(pos>=begin()&&pos<=end());
+			iterator end =pos + 1;
+			while (end  < _finish)
+			{ 
+				*(end - 1) = *end;
+				end++;
+			}
+			_finish--;
+			return  pos;
+		}
+		void resize(size_t n,const T& val = T())
+		{
+			if (n < size())
+			{
+				_finish = _start + n;
+			}
+			else
+			{
+				reserve(n);
+				while (_finish != _start + n) 
+				{
+					*_finish = val;
+					_finish++;
+				}
+				
+			}
+		}
 	private:
 		iterator _start;
 		iterator _finish;
@@ -121,6 +149,7 @@ namespace wj
 		}
 		cout << endl;
 	}
+	
 	void test_vector1()
 	{
 		A<int> v1;
@@ -160,6 +189,7 @@ namespace wj
 		v1.push_back(5);
 		v1.push_back(5);
 		v1.push_back(5);
+		v1.push_back(8);
 
 		for (auto e : v1)
 		{
@@ -170,6 +200,55 @@ namespace wj
 		v1.insert(v1.begin()+2, 10);
 
 		for (auto e : v1)
+		{
+			cout << e << " ";
+		}
+		cout << endl;
+		v1.erase(v1.begin()+2);
+		for (auto e : v1)
+		{
+			cout << e << " ";
+		}
+		cout << endl;
+	}
+	void test_vector3()
+	{
+		A<int> v1;
+		v1.push_back(1);
+		v1.push_back(2);
+		v1.push_back(3);
+		v1.push_back(4);
+		v1.push_back(5);
+		v1.push_back(8);
+		v1.push_back(5);
+		v1.push_back(26);
+		
+		auto it = v1.begin();
+		while (it != v1.end())
+		{
+			if (*it % 2 == 0)
+			{
+
+				//返回的是所删除元素的下一个位置，用返回值，库里也是返回一个iteraror
+				it = v1.erase(it);
+			}
+			else
+			{
+				it++;
+			}
+		}
+
+		for (auto e : v1)
+		{
+			cout << e << " ";
+		}
+		cout << endl;
+	}
+	void test_vector4()
+	{
+		A<int>v4;
+		v4.resize(12);
+		for (auto e : v4)
 		{
 			cout << e << " ";
 		}

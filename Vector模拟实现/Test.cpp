@@ -224,5 +224,5 @@ void vector5()
 #include"vector.h"
 int main()
 {
-	wj::test_vector2();
+	wj::test_vector4();
 }
