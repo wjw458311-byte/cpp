@@ -11,11 +11,11 @@ namespace wj
 	public:
 		typedef T* iterator;
 		typedef const T* const_iterator;
-		size_t capacity()
+		size_t capacity()const
 		{
 			return _end_of_storage - _start;
 		}
-		size_t size()
+		size_t size()const
 		{
 			return _finish - _start;
 		}
@@ -46,6 +46,17 @@ namespace wj
 			,_finish(nullptr)
 			,_end_of_storage(nullptr)
 		{ }
+		//(1)传统写法,自己开空间自己拷贝
+		A(const A<T>& v)
+			:_start(nullptr)
+			, _finish(nullptr)
+			, _end_of_storage(nullptr)
+		{
+			_start = new T[v.capacity()];
+			memcpy(_start, v._start, sizeof(T) * v.size());
+			_finish = _start + v.size();
+			_end_of_storage = _start + v.capacity();
+		}
 		~A()
 			
 		{ 
@@ -136,6 +147,7 @@ namespace wj
 				
 			}
 		}
+		
 	private:
 		iterator _start;
 		iterator _finish;
@@ -253,5 +265,21 @@ namespace wj
 			cout << e << " ";
 		}
 		cout << endl;
+	}
+	void test_vector5()
+	{
+		A<int >v5;
+		v5.push_back(1);
+		v5.push_back(2);
+		v5.push_back(3);
+		v5.push_back(4);
+		v5.push_back(5);
+		A<int >v6(v5);
+		for (auto e : v6)
+		{
+			cout << e << " ";
+		}
+		cout << endl;
+
 	}
 }
