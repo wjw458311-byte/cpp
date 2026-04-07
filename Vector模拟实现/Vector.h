@@ -47,7 +47,7 @@ namespace wj
 			,_end_of_storage(nullptr)
 		{ }
 		//(1)传统写法,自己开空间自己拷贝
-		A(const A<T>& v)
+		/*A(const A<T>& v)
 			:_start(nullptr)
 			, _finish(nullptr)
 			, _end_of_storage(nullptr)
@@ -56,6 +56,49 @@ namespace wj
 			memcpy(_start, v._start, sizeof(T) * v.size());
 			_finish = _start + v.size();
 			_end_of_storage = _start + v.capacity();
+		}*/
+
+		//（2）开空间push_back
+		A(const A<T>& v)
+		
+			:_start(nullptr)
+			, _finish(nullptr)
+			, _end_of_storage(nullptr)
+		{
+
+			for (auto e : v)
+			{
+				push_back(e);
+			}
+		}
+		void swap( A<T>& v)
+		{
+			std::swap(_start,v._start);
+			std::swap(_finish,v._finish);
+			std::swap(_end_of_storage,v._end_of_storage);
+		}
+		A<T>& operator=( A<T> v)
+		{
+			//用库里std的
+			swap(v);
+			return *this;
+		}
+		A(size_t n, const T val= T())
+		{
+			resize(n, val);
+		}
+		/*A(int n, const T val = T())
+		{
+			resize(n, val);
+		}*/
+		template<class InputIterator>
+		A(InputIterator first, InputIterator last)
+		{
+			while (first != last)
+			{
+				push_back(*first);
+				++first;
+			}
 		}
 		~A()
 			
@@ -75,7 +118,11 @@ namespace wj
 				if (_start)
 				{
 
-					memcpy(tmp, _start, sizeof(T) * sz);
+					for (size_t i = 0; i < sz; i++)
+					{
+						//本质是赋值重载,使用memcpy导致string对象浅拷贝
+						tmp[i] = _start[i];
+					}
 					delete[] _start;
 				}
 				_start = tmp;
@@ -130,6 +177,7 @@ namespace wj
 			_finish--;
 			return  pos;
 		}
+		//C++中，内置类型也可以支持默认构造
 		void resize(size_t n,const T& val = T())
 		{
 			if (n < size())
@@ -274,12 +322,54 @@ namespace wj
 		v5.push_back(3);
 		v5.push_back(4);
 		v5.push_back(5);
-		A<int >v6(v5);
+		A<int >v6(v5);//深拷贝
+		for (auto e : v6)
+		{
+			cout << e << " ";
+		}
+		cout << endl;
+		A<int >v2;
+		v2.resize(10, 1);
+
+		v6 = v2;//赋值重载
 		for (auto e : v6)
 		{
 			cout << e << " ";
 		}
 		cout << endl;
 
+	}
+	void test_vector6()
+	{
+		A<string>v;
+		v.push_back("111111111111111");
+		v.push_back("33333333333333333333333");
+		v.push_back("5555555555555555");
+		v.push_back("77777777777777777777777777");
+		v.push_back("88888888888888888888888888");
+		for (auto& e : v)
+		{
+			cout << e << " ";
+		}
+		cout << endl;
+		A<string>v2(v);
+
+		for (auto e : v2)
+		{
+			cout << e << " ";
+		}
+		cout << endl;
+
+	}
+	void test_vector7()
+	{
+		//A<int >v1(10, 1);
+		A<string >v2(10, "*****");
+		A<int >v3(10u, 1);
+		for (auto e : v2)
+		{
+			cout << e << " ";
+		}
+		cout << endl;
 	}
 }
