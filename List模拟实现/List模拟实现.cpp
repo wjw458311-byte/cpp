@@ -102,7 +102,6 @@ namespace wj
 		iterator end()
 		{
 			return head;
-
 		}
 		const_iterator end() const
 		{
