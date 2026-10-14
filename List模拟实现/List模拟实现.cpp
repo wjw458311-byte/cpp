@@ -30,7 +30,7 @@ namespace wj
 		_list_iterator(Node* node)
 			:_node(node)
 		{}
-		Ref& operator*()
+		Ref operator*()
 		{
 			return _node->_val;
 		}
@@ -148,6 +148,7 @@ namespace wj
 		}
 		~list()
 		{
+			clear();
 			delete head;
 			head = nullptr;
 
@@ -219,31 +220,31 @@ namespace wj
 	};
 
 }
-//int main()
-//{
-//	wj::list<int >lt;
-//	lt.push_back(1);
-//	lt.push_back(2);
-//	lt.push_back(3);
-//	lt.push_back(4);
-//	lt.push_back(5);
-//	lt.push_back(1);
-//	wj::list<int>::iterator it = lt.begin();
-//	while (it != lt.end())
-//	{
-//		cout << *it << " ";
-//		++it;
-//	}
-//	cout << endl;
-//	/*const::wj::list<int >clt = lt;
-//	wj::list<int>::const_iterator cit = clt.begin();
-//	while (cit != clt.end())
-//	{
-//		(*cit)++;
-//		cout << *it << " ";
-//		++it;
-//	}*/
-//}
+int main()
+{
+	wj::list<int >lt;
+	lt.push_back(1);
+	lt.push_back(2);
+	lt.push_back(3);
+	lt.push_back(4);
+	lt.push_back(5);
+	lt.push_back(1);
+	wj::list<int>::iterator it = lt.begin();
+	while (it != lt.end())
+	{
+		cout << *it << " ";
+		++it;
+	}
+	cout << endl;
+	//const::wj::list<int >clt = lt;
+	//wj::list<int>::const_iterator cit = clt.begin();
+	while (it != lt.end())
+	{
+		(*it)++;
+		cout << *it << " ";
+		++it;
+	}
+}
 	//struct A
 	//{
 	//	A(int a1 = 0, int a2 = 0)
@@ -311,44 +312,45 @@ namespace wj
 
 		cout << lt.size() << endl;
 	}*/
-int main()
-{
-	wj::list<int> lt;
-	lt.push_back(1);
-	lt.push_back(2);
-	lt.push_back(3);
-	lt.push_back(4);
-
-	for (auto e : lt)
-	{
-		cout << e << " ";
-	}
-	cout << endl;
-	//拷贝构造
-	wj::list<int> lt1(lt);
-	for (auto e : lt1)
-	{
-		cout << e << " ";
-	}
-	cout << endl;
-	
-	wj::list<int> lt2;
-	lt2.push_back(10);
-	lt2.push_back(20);
-	lt2.push_back(30);
-	lt2.push_back(40);
-
-	for (auto e : lt2)
-	{
-		cout << e << " ";
-	}
-	cout << endl;
-	//lt2再赋值lt1
-	lt1 = lt2;
-
-	for (auto e : lt1)
-	{
-		cout << e << " ";
-	}
-	cout << endl;
-}
+//int main()
+//{
+//	wj::list<int> lt;
+//	lt.push_back(1);
+//	lt.push_back(2);
+//	lt.push_back(3);
+//	lt.push_back(4);
+//
+//	for (auto e : lt)
+//	{
+//		cout << e << " ";
+//	}
+//	cout << endl;
+//	//拷贝构造
+//	wj::list<int> lt1(lt);
+//	for (auto e : lt1)
+//	{
+//		cout << e << " ";
+//	}
+//	cout << endl;
+//	
+//	wj::list<int> lt2;
+//	lt2.push_back(10);
+//	lt2.push_back(20);
+//	lt2.push_back(30);
+//	lt2.push_back(40);
+//
+//	for (auto e : lt2)
+//	{
+//		cout << e << " ";
+//	}
+//	cout << endl;
+//	//lt2再赋值lt1
+//	lt1 = lt2;
+//
+//	for (auto e : lt1)
+//	{
+//		cout << e << " ";
+//	}
+//	cout << endl;
+//}
+//
