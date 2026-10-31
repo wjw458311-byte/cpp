@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "PriorityQueue\\Debug\\List.obj",
+            "outputs": [
+                "PriorityQueue\\Debug\\List.h_C123D51BB51984AD.ifc.dt.module.json",
+                "PriorityQueue\\Debug\\List.h_C123D51BB51984AD.ifc.dt.d.json",
+                "PriorityQueue\\Debug\\List.h.ifc"
+            ],
+            "provides": [
+                {
+                    "logical-name": "D:\\develop\\code\\c-plus-plus\\List模拟实现\\List.h",
+                    "source-path": "d:\\develop\\code\\c-plus-plus\\list模拟实现\\list.h",
+                    "lookup-method": "absolute"
+                }
+            ],
+            "requires": []
+        }
+    ]
+}

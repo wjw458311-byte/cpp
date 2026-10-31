@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "PriorityQueue\\Debug\\ReverseIterator.obj",
+            "outputs": [
+                "PriorityQueue\\Debug\\ReverseIterator.h.obj.dt.module.json",
+                "PriorityQueue\\Debug\\ReverseIterator.h.obj.dt.d.json"
+            ],
+            "requires": []
+        }
+    ]
+}

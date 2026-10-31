@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "PriorityQueue\\x64\\Debug\\priorityQueue.obj",
+            "outputs": [
+                "PriorityQueue\\x64\\Debug\\priorityQueue.h.obj.dt.module.json",
+                "PriorityQueue\\x64\\Debug\\priorityQueue.h.obj.dt.d.json"
+            ],
+            "requires": []
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "PriorityQueue\\Debug\\List模拟实现.obj",
+            "outputs": [
+                "PriorityQueue\\Debug\\List模拟实现.cpp.obj.dt.module.json",
+                "PriorityQueue\\Debug\\List模拟实现.cpp.obj.dt.d.json"
+            ],
+            "requires": []
+        }
+    ]
+}

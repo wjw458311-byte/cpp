@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "PriorityQueue\\Debug\\List模拟实现.obj",
+            "outputs": [
+                "PriorityQueue\\Debug\\List模拟实现.h_21166846FF8A4938.ifc.dt.module.json",
+                "PriorityQueue\\Debug\\List模拟实现.h_21166846FF8A4938.ifc.dt.d.json",
+                "PriorityQueue\\Debug\\List模拟实现.h.ifc"
+            ],
+            "provides": [
+                {
+                    "logical-name": "D:\\develop\\code\\c-plus-plus\\List模拟实现\\List模拟实现.h",
+                    "source-path": "d:\\develop\\code\\c-plus-plus\\list模拟实现\\list模拟实现.h",
+                    "lookup-method": "absolute"
+                }
+            ],
+            "requires": []
+        }
+    ]
+}

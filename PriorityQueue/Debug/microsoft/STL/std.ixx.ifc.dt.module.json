@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "PriorityQueue\\Debug\\microsoft\\STL\\std.obj",
+            "outputs": [
+                "PriorityQueue\\Debug\\microsoft\\STL\\std.ixx.ifc.dt.module.json",
+                "PriorityQueue\\Debug\\microsoft\\STL\\std.ixx.ifc.dt.d.json",
+                "PriorityQueue\\Debug\\microsoft\\STL\\std.ifc"
+            ],
+            "provides": [
+                {
+                    "logical-name": "std",
+                    "source-path": "d:\\develop\\community\\vc\\tools\\msvc\\14.51.36231\\modules\\std.ixx",
+                    "is-interface": true
+                }
+            ],
+            "requires": []
+        }
+    ]
+}
