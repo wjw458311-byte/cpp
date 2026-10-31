@@ -1,31 +1,52 @@
 #pragma once
-
+//#include<functional>
 #include<vector>
+
 namespace wj
 {
-	template<class T, class Container = vector<T>>
+	/*template<class T>
+	struct Less
+	{
+
+		bool operator()(const T& x, const T& y)
+		{
+			return x < y;
+		}
+	};
+	template<class T>
+
+	struct Greater
+	{
+
+		bool operator()(const T& x, const T& y)
+		{
+			return x > y;
+		}
+	};*/
+	template<class T, class Container = vector<T>, class Compare = greater<T>>
 	class priorityqueue
 	{
 		//先输入数据
 	private:
 		//大堆
-		void Adjustdown(int partent)
+		void Adjustdown(int parent)
 		{
-			size_t child = partent * 2 + 1;
+			size_t child = parent * 2 + 1;
 			//每个堆
 			while (child<_con.size())
 			{
+				Compare com;
 				//判断左右孩子哪个大
-				if (child+1< _con.size() && _con[child] < _con[child + 1])
+				if (child+1< _con.size() && com(_con[child] , _con[child + 1]))
 				{
 					child++;
 				}
 				//交换,孩子比父亲大的
-				if (_con[child] > _con[partent])
+				if (com(_con[parent],_con[child]))
 				{
-					swap(_con[child], _con[partent]);
-					partent = child;//更新父节点和孩子节点位置，继续往下
-					child = partent * 2 + 1;
+					swap(_con[child], _con[parent]);
+					parent = child;//更新父节点和孩子节点位置，继续往下
+					child = parent * 2 + 1;
 				}
 				else
 				{
@@ -37,15 +58,16 @@ namespace wj
 		
 		void Adjustup(int child)
 		{
-			size_t  partent = (child - 1) / 2;
+			size_t  parent = (child - 1) / 2;
 			//大堆
 			while (child>0)
 			{
-				if (_con[child]>_con[partent])
+				Compare com;
+				if (com(_con[parent], _con[child]))
 				{
-				swap(_con[child] ,_con[partent]);
-				child = partent;
-				partent = (child - 1) / 2;
+				swap(_con[child] ,_con[parent]);
+				child = parent;
+				parent = (child - 1) / 2;
 				}
 				else
 				{
@@ -110,7 +132,8 @@ namespace wj
 	void test_priorityqueue1()
 	{
 	
-		priorityqueue<int> pq;
+		priorityqueue<int,vector<int>,less<int>> pq;
+	//	priorityqueue<int> pq;
 
 		pq.push(3);
 		pq.push(5);
@@ -124,6 +147,63 @@ namespace wj
 		}
 		cout << endl;
 	}
+	class Date
+	{
+	public:
+		Date(int year = 1900, int month = 1, int day = 1)
+			: _year(year)
+			, _month(month)
+			, _day(day)
+		{}
 
+		bool operator<(const Date& d)const
+		{
+			return (_year < d._year) ||
+				(_year == d._year && _month < d._month) ||
+				(_year == d._year && _month == d._month && _day < d._day);
+		}
 
+		bool operator>(const Date& d)const
+		{
+			return (_year > d._year) ||
+				(_year == d._year && _month > d._month) ||
+				(_year == d._year && _month == d._month && _day > d._day);
+		}
+
+		friend ostream& operator<<(ostream& _cout, const Date& d);
+	private:
+		int _year;
+		int _month;
+		int _day;
+	};
+
+	ostream& operator<<(ostream& _cout, const Date& d)
+	{
+		_cout << d._year << "-" << d._month << "-" << d._day;
+		return _cout;
+	}
+
+	/*struct LessPDate
+	{
+		bool operator()(const Date* p1, const Date* p2)
+		{
+			return *p1 < *p2;
+		}
+	};*/
+
+	void test_priorityqueue2()
+	{
+		// 仿函数控制实现小堆
+		priorityqueue<Date, vector<Date>, greater<Date>> pq;
+		pq.push(Date(2023, 7, 20));
+		pq.push(Date(2023, 6, 20));
+		pq.push(Date(2023, 8, 20));
+
+		while (!pq.empty())
+		{
+			cout << pq.top() << " ";
+			pq.pop();
+		}
+		cout << endl;
+	}
 }
